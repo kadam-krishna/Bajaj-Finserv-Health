@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css';
+import './App.css'; 
 
 const App = () => {
   const [jsonInput, setJsonInput] = useState('');
@@ -13,7 +13,7 @@ const App = () => {
       const data = JSON.parse(jsonInput);
       setErrorMessage('');
 
-      const apiResponse = await axios.post('/bfhl', { data });
+      const apiResponse = await axios.post('http://localhost:3000/bfhl', { data });
       setResponse(apiResponse.data);
     } catch (error) {
       if (error instanceof SyntaxError) {
@@ -46,12 +46,12 @@ const App = () => {
     : null;
 
   return (
-    <div>
-      <h1>ABCD123</h1>
+    <div className="app">
+      <h1>Enter JSON data</h1> 
       <textarea
         value={jsonInput}
         onChange={(e) => setJsonInput(e.target.value)}
-        placeholder="Enter JSON data"
+        placeholder='Enter JSON data (e.g., {"data": ["A", "C", "z"]})'
       />
       <button onClick={handleSubmit}>Submit</button>
       {errorMessage && <div className="error">{errorMessage}</div>}
@@ -59,9 +59,9 @@ const App = () => {
       {response && (
         <div className="response">
           <h2>Response</h2>
-          <div>User ID: {response.user_id}</div>
-          <div>Email: {response.email}</div>
-          <div>Roll Number: {response.roll_number}</div>
+          <div>User ID: {"kadam-krishna"}</div>
+          <div>Email: {"krishnakadamwork@gmail.com"}</div>
+          <div>Roll Number: {"21BCE3021"}</div>
 
           <h3>Select Options</h3>
           <label>
